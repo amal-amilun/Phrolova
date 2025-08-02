@@ -1,5 +1,4 @@
 import ccxt
-import numpy as np
 import pandas as pd
 import pandas_ta as ta
 import time
@@ -9,20 +8,19 @@ load_dotenv()
 
 CONFIG = {
     "exchange": "binance",
-    "api_key": os.getenv("TESTNET_API_KEY"),
-    "api_secret":os.getenv("TESTNET_SECRET_KEY"),
+    "api_key": os.getenv("LIVE_API_KEY"),
+    "api_secret":os.getenv("LIVE_SECRET_KEY"),
     "symbol": "BTC/USDT",
     "timeframe": "1h",
 
     # Pengaturan Indikator
-    "ma_fast_period": 5,
-    "ma_slow_period": 13,
-    "atr_period": 13,
+    "ma_fast_period": 4,
+    "ma_slow_period": 9,
+    "atr_period": 9,
 
     # Pengaturan Manajemen Risiko
     "use_trailing_stop": True,
-    "trailing_stop_atr_multiplier": 3,
-    "trade_amount_usd": 100,
+    "trailing_stop_atr_multiplier": 2,
 }
 
 # Fungsi-Fungsi Utama Bot
@@ -35,7 +33,7 @@ def connect_to_exchange():
             'secret': CONFIG['api_secret'],
             'enableRateLimit': True,
         })
-        exchange.set_sandbox_mode(True)
+        exchange.set_sandbox_mode(False)
         print("Berhasil terhubung ke bursa.")
         return exchange
     except Exception as e:
@@ -102,8 +100,9 @@ def main_loop():
         try:
             print("\n"+"="*30)
             print(f"Candle baru untuk {CONFIG['symbol']} pada time frame {CONFIG['timeframe']}")
-            balances = exchange.fetch_balance()['total']
-            print(balances)
+
+            balances = exchange.fetch_balance()['free']
+            print(f"Saldo tersedia: BTC={balances.get('BTC', 0)}, USDT={balances.get('USDT', 0):.2f}")
             
             # Ambil data OHLCV
             ohlcv = exchange.fetch_ohlcv(CONFIG['symbol'], CONFIG['timeframe'], limit=200)
@@ -117,9 +116,12 @@ def main_loop():
             # Cek Trailing Stop
             if position_data['in_position']:
                 if manage_trailing_stop(latest_data['close'], position_data):
-                    position_data['in_position'] = False
-                    exchange.create_market_sell_order(CONFIG['symbol'], CONFIG['trade_amount_usd'])
-                    time.sleep(exchange.rateLimit / 1000)
+                    btc_balance = balances.get('BTC', 0)
+                    if btc_balance > 0:
+                        print(f"Menjual seluruh {btc_balance} BTC..")
+                        position_data['in_position'] = False
+                        exchange.create_market_sell_order(CONFIG['symbol'], btc_balance)
+                        time.sleep(exchange.rateLimit / 1000)
                     continue
             
             action = "hold"
@@ -127,11 +129,14 @@ def main_loop():
 
             # Eksekusi
             if action == "buy":
-                print(f"Eksekusi: Membeli di {latest_data['close']}")
-                # order = exchange.create_market_buy_order(CONFIG['symbol'], amount_to_buy)
-                position_data['in_position'] = True
-                position_data['entry_price'] = latest_data['close']
-                position_data['trailing_stop_price'] = latest_data['close'] - (latest_data['close'] * CONFIG['trailing_stop_atr_multiplier'])
+                usdt_balance = balances.get("USDT", 0)
+                if usdt_balance > 10:
+                    print(f"Membeli BTC dengan seluruh {usdt_balance} USDT..")
+                    params = {'quoteOrderQty': usdt_balance}
+                    exchange.create_market_buy_order(CONFIG['symbol'], None, params)
+                    position_data['in_position'] = True
+                    position_data['entry_price'] = latest_data['close']
+                    position_data['trailing_stop_price'] = latest_data['close'] - (latest_data['close'] * CONFIG['trailing_stop_atr_multiplier'])
             
             else:
                 print("Aksi: Hold")
