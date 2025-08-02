@@ -1,5 +1,5 @@
 # Phrolova
-Trading bot with trend-following (buy only) and stop-trailing strategy. Trust me, this strategy really outperforms every other strategies that I've made. Well I've tried full trend-following strategy (buy and sell using moving average) but the results weren't that good, I also tried mean-reversion strategy which of course didn't work well (since everyone knows that btc's market is trending and not ranging). I even made something that can detect if the market was trending or ranging and would switch between trend-follwing strategy and mean-reversion accordingly. But that inovation performs worse than any strategies I ever made.. guess the market of a coin just don't change at all.. 
+Trading bot with trend-following (buy only) and stop-trailing strategy. Trust me, this strategy really outperforms every other strategies that I've made. Well I've tried full trend-following strategy (buy and sell using moving average) but the results weren't that good. I also tried mean-reversion strategy which of course didn't work well (since everyone knows that btc's market is trending and not ranging). I even made something that can detect if the market was trending or ranging and would switch between trend-follwing strategy and mean-reversion accordingly. But that inovation performs worse than any strategies I ever made.. guess the market of a coin just don't change at all.. 
 
 ### Best Parameters For 2011-2021:
 - **MA FAST:** 5
@@ -12,7 +12,7 @@ Trading bot with trend-following (buy only) and stop-trailing strategy. Trust me
 ### Best Parameters for 2018-2025:
 - **MA FAST:** 4
 - **MA SLOW:** 9
-- **ATR PERIOD:** 13
+- **ATR PERIOD:** 9
 - **TRAILING MULTIPLIER:** 2
   
 **NOTE: Performs worse for 2011-2021 as only turn 5 to 225k, yet performs best for 2018-2025 as 5 can grow to 225k**
