@@ -19,4 +19,4 @@ Trading bot for Bitcoin with trend-following (buy only) and stop-trailing strate
 
 Looking at how different the chart from 2011-2021 and 2018-2025, it's better to use the second parameters if you aim for higher profits. However, as you can see the first parameters perform kinda well in both cases so pick the first one if you prefer more stable returns.
 
-One more, while I originally designed this for a long-term investing in mind. This also can work well with short-term alt-coin trading. To do that, I'd suggest you using more shorter timeframe and adjusting parameters to whatever settings you think will perform best. I also use this for alt-coin btw.. it's much more profitable.
+One more, while I originally designed this for a long-term investing in mind. This also can work well with short-term alt-coin trading. For that I'd suggest you using more shorter timeframe and adjusting parameters to whatever settings you think will perform best. I also use this for alt-coin btw.. it's much more profitable.
