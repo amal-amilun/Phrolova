@@ -27,4 +27,4 @@ One more, while I originally designed this for a long-term investing in mind. Th
 - **MA SLOW:** 7
 - **TRAILING MULTIPLIER:** 3
 
-**NOTE: Only use these parameters to alt-coin with 24h volume at least 1.5 higher than its market cup. Otherwise, it will result in losses.**
+**NOTE: Only use these parameters to alt-coin with 24h volume higher than its market cup (maybe at least 1.5x). Otherwise, it will result in losses. Yes.. this is important and I've tried this with 20 different coins**
