@@ -72,7 +72,7 @@ def manage_trailing_stop(latest_price, position_data):
     current_trailing_stop_price = latest_price - (position_data['latest_atr'] * CONFIG['trailing_stop_atr_multiplier'])
 
     # Update trailing stop
-    if current_trailing_stop_price < position_data['trailing_stop_price']:
+    if current_trailing_stop_price > position_data['trailing_stop_price']:
         position_data['trailing_stop_price'] = current_trailing_stop_price
         print(f"Trailing stop diupdate ke: {current_trailing_stop_price:.2f}")
         
