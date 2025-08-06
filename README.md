@@ -23,8 +23,9 @@ Looking at how different the chart from 2011-2021 and 2018-2025, it's better to 
 One more, while I originally designed this for a long-term investing in mind. This also can work well with short-term alt-coin trading. For that I'd suggest you using more shorter timeframe and adjusting parameters to whatever settings you think will perform best. I also use this for alt-coin btw.. it's much more profitable.
 
 ### MY FAVORITE PARAMETERS (5m timeframe):
-- **MA FAST:** 3
-- **MA SLOW:** 7
+- **MA FAST:** 3 | 2
+- **MA SLOW:** 7 | 9
+- **ATR PERIOD:** 7 | 9
 - **TRAILING MULTIPLIER:** 3
 
 **NOTE: Only use these parameters to alt-coin with 24h volume higher than its market cup (maybe at least 1.5x). Otherwise, it will result in losses. Yes.. this is important and I've tried this with 20 different coins**
