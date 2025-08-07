@@ -1,0 +1,19 @@
+
+[Unit]
+Description=My Python Trading Bot
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/Phrolova
+ExecStart=/usr/bin/python3.12 /root/Phrolova/Phrolova.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
+
