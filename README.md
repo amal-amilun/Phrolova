@@ -20,7 +20,7 @@ Trading bot for Bitcoin with trend-following (buy only) and stop-trailing strate
 Looking at how different the chart from 2011-2021 and 2018-2025, it's better to use the second parameters if you aim for higher profits. However, as you can see the first parameters perform kinda well in both cases so pick the first one if you prefer more stable returns.
 
 # TRADING FOR ALT-COIN
-One more, while I originally designed this for a long-term investing in mind. This also can work well with short-term alt-coin trading. For that I'd suggest you using more shorter timeframe and adjusting parameters to whatever settings you think will perform best. I also use this for alt-coin btw.. it's much more profitable.
+One more, while I originally designed this for a long-term investing in mind. This also can work quite well with short-term alt-coin trading. For that I'd suggest you using more shorter timeframe and adjusting parameters to whatever settings you think will perform best.
 
 ### MY FAVORITE PARAMETERS (5m timeframe):
 - **MA FAST:** 3 | 2
@@ -28,4 +28,4 @@ One more, while I originally designed this for a long-term investing in mind. Th
 - **ATR PERIOD:** 7 | 9
 - **TRAILING MULTIPLIER:** 3
 
-**NOTE: Only use these parameters to alt-coin with 24h volume higher than its market cup (maybe at least 1.5x). Otherwise, it will result in losses. Yes.. this is important and I've tried this with 20 different coins**
+**NOTE: I really don't recommend you trading alt-coins, as they're so unpredictable and are a lot of pump-and-dump schemes TT.. (Honestly, you can say their value is based more on one's many other solid fundamentals.. you really need lot of data to spot the real patterns in it). If you're chasing fast money that badly, remember there are many people wo can't even afford food or water for the whole day.. **
